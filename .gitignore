@@ -28,6 +28,7 @@
 *.so
 *.so.*
 *.dylib
+*.iso
 
 # Executables
 *.exe

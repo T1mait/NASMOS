@@ -1,0 +1,6 @@
+ENTRY(kmain)
+
+SECTIONS
+{
+
+}
