@@ -1,10 +1,10 @@
-OBJS := $(shell mkdir -p output; find output -name '*.o')
+OBJS = $(shell mkdir -p output; find output -name '*.o')
 
 CC = i386-elf-gcc
 CFLAGS = -w -ffreestanding -m32 -fno-pie -nostdlib
 
-NS = nasm
-NSFLAGS = -f elf32
+NASM = nasm
+NASMFLAGS = -f elf32
 
 KERNEL_C := $(shell find src/ -name *.c)
 KERNEL_ASM := $(shell find src/ -name *.asm)
@@ -23,7 +23,6 @@ define build-rule
     done
 endef
 
-
 all:
 	$(MAKE) build
 	$(MAKE) make_iso
@@ -31,9 +30,9 @@ all:
 
 
 kernel:
-	mkdir -p output/kernel/
+	mkdir -p output/
 	$(call build-rule,$(KERNEL_C),src/,output/,.c,.o,$(CC),$(CFLAGS))
-	$(call build-rule,$(KERNEL_ASM),src/,output/,.asm,.o,$(NS),$(NSFLAGS))
+	$(call build-rule,$(KERNEL_ASM),src/,output/,.asm,.o,$(NASM),$(NASMFLAGS))
 
 link:
 	i386-elf-ld -m elf_i386 -T src/linker.ld --oformat elf32-i386 -o output/kernel.elf $(OBJS)

@@ -2,8 +2,8 @@ ENTRY(kmain)
 
 SECTIONS
 {
-  .multiboot :{
-    *(.multiboot)
+  .multiboot : {
+    KEEP(*(.multiboot))
   }
 
   . = 0x10000;
@@ -23,5 +23,4 @@ SECTIONS
     *(.bss)
     *(COMMON)
   }
-
 }
