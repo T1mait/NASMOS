@@ -54,7 +54,7 @@ make_iso:
 	grub-mkrescue -o output/kernel.iso ./iso/
 
 run:
-	sudo qemu-system-i386 -no-reboot -no-shutdown -monitor stdio \
+	qemu-system-i386 -no-reboot -no-shutdown -monitor stdio \
 	-drive file=output/kernel.iso,format=raw,if=ide,index=1,media=cdrom \
 	-d int,cpu_reset -D qemu.log \
 	-boot d

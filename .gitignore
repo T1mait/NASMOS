@@ -1,6 +1,7 @@
 output/
 
 *.elf
+*.o
 **.kate-swp
 **.log
 **.img
